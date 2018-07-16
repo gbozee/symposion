@@ -67,7 +67,7 @@ def proposals_generator(request, queryset, user_pk=None, check_speaker=True):
 @login_required
 def review_section(request, section_slug, assigned=False, reviewed="all"):
 
-    if not request.user.has_perm("reviews.can_review_%s" % section_slug):
+    if not request.user.has_perm("symposion_reviews.add_review"):
         return access_not_permitted(request)
 
     section = get_object_or_404(ProposalSection, section__slug=section_slug)
@@ -304,7 +304,7 @@ def review_delete(request, pk):
 @login_required
 def review_status(request, section_slug=None, key=None):
 
-    if not request.user.has_perm("reviews.can_review_%s" % section_slug):
+    if not request.user.has_perm("symposion_reviews.add_review"):
         return access_not_permitted(request)
 
     VOTE_THRESHOLD = settings.SYMPOSION_VOTE_THRESHOLD
