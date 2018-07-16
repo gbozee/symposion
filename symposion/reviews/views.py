@@ -177,8 +177,8 @@ def review_detail(request, pk):
     proposals = ProposalBase.objects.select_related("result").select_subclasses()
     proposal = get_object_or_404(proposals, pk=pk)
 
-    if not request.user.has_perm("reviews.can_review_%s" % proposal.kind.section.slug):
-        return access_not_permitted(request)
+    # if not request.user.has_perm("reviews.can_review_%s" % proposal.kind.section.slug):
+    #     return access_not_permitted(request)
 
     speakers = [s.user for s in proposal.speakers()]
 
