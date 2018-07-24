@@ -131,6 +131,8 @@ class Sponsor(models.Model):
                 if benefits[0].upload:
                     self.sponsor_logo = benefits[0]
                     self.save()
+        if self.image_link:
+            return self.image_link.image.url
         return self.sponsor_logo.upload
 
     @property
