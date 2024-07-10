@@ -55,6 +55,9 @@ class Room(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def __unicode__(self):
+        return self.name
 
     class Meta:
         verbose_name = _("Room")
